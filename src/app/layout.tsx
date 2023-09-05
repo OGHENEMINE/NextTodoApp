@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-slate-900 text-slate-50 container mx-auto p-6`}>
+      <body className={`${inter.className} bg-slate-900 text-slate-50 container mx-auto p-8`}>
         <TodoProvider>{children}</TodoProvider>
       </body>
     </html>
