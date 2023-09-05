@@ -15,11 +15,15 @@ export const todoContext = createContext<TodoContext | null>(null);
 
 export function TodoProvider({ children }: { children: ReactNode }) {
   const [todos, setTodos] = useState<TodoContextProp[]>(
-    JSON.parse(localStorage.getItem("todos") as string) || []
+    typeof window !== "undefined"
+      ? JSON.parse(localStorage.getItem("todos") as string) || []
+      : undefined
   );
 
   useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
+    typeof window !== "undefined"
+      ? localStorage.setItem("todos", JSON.stringify(todos))
+      : undefined;
   }, [todos]);
 
   return (
